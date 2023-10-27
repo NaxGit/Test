@@ -1,0 +1,79 @@
+#tray
+{
+display: none;
+
+align-content: center;
+
+padding: 0.5em;
+border-radius: 0.5em;
+border: 1px solid #34D399;
+}
+
+#trfay img
+{
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid #34D399;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.3em 0.3em rgba(0, 0, 0, 0.5);
+}
+
+#tray input
+{
+font-size: 1.2em;
+border: none;
+outline: none;
+padding: 0;
+margin: 0;
+color: #DCDCDC;
+background: #303030;
+height: 48px;
+
+width: 100%;
+padding: 0.5em;
+border-radius: 0.5em;
+border: 1px solid #34D399;
+backdrop-filter: blur(5px);
+}
+
+
+/* confirmation */
+/* cancellation */
+
+.spots
+{
+display: grid;
+gap: 0.5em;
+grid-template-columns: 1fr 1fr;
+}
+
+.switch {
+  border: none;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: calc(0.5em - 1px);
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 4px;
+  width: 100%;
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.confirmation {background-color: #00d1b2;}
+.cancellation {background-color: #f14668;}
+
+
+#look
+{
+text-align: start;
+border: 3px solid #00d1b2;
+border-radius: 0.5em;
+background-color: #FFFFFF;
+}

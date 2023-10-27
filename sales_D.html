@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./art/Alpha.css">
+    <link rel="stylesheet" href="./art/Delta.css">
+    <link rel="stylesheet" href="./art/icon.css">
+    <link rel="stylesheet" href="./art/tray.css">
+    <script src="./bin/Steptronic.js"></script>
+    <title>∞Pegasus</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <delta-menu></delta-menu>
+    <div class="iJava">
+        <div id="tray"></div>
+        <div id="zebra" class="zebra-table"></div>
+        <div id="logue"></div>
+    </div>
+    <delta-foot></delta-foot>
+<script>
+let idata;
+const AOL = indexedDB.open("Kings", 1);
+AOL.onsuccess = () => {idata = AOL.result; ZCiTodaySales(); salesDly();};
+AOL.onupgradeneeded = function(e) {e.target.transaction.abort(); location.href = "./dial/upgrade.html";};
+
+let trays = document.getElementById("tray");
+let zebra = document.getElementById("zebra");
+
+function ZCiTodaySales()
+{
+let zebra = document.getElementById("zebra");
+const request = idata.transaction("sales", "readonly").objectStore("sales").index("Shift").getAll(1);
+request.onsuccess = function()
+{
+let requestData = request.result;
+    requestData.forEach
+(
+    (i) =>
+{
+let TimeDiv = document.createElement("div"); TimeDiv.textContent = i.Stime;
+let ItemDiv = document.createElement("div"); ItemDiv.textContent = i.Item;
+let SellDiv = document.createElement("div"); SellDiv.textContent = i.Sell;
+
+zebra.append(TimeDiv, ItemDiv, SellDiv);
+})
+}
+};
+
+function salesDly()
+{
+let logue = document.getElementById("logue");
+const query = idata.transaction("sales", "readonly").objectStore("sales").index("Shift").getAll(1);
+query.onsuccess = function()
+{
+let cell = query.result.map((row) => {return row.Cost});
+let Worth = 0; cell.forEach(KSH => {Worth += KSH;});
+
+let lable = "daily Sales";
+
+let DWMmodule = document.createElement("div"); DWMmodule.setAttribute("class", "DWMmodule");
+let DWMmTitle = document.createElement("div"); DWMmTitle.setAttribute("class", "DWMmTitle");
+let DWMmStats = document.createElement("div"); DWMmStats.setAttribute("class", "DWMmStats");
+
+let chain = document.getElementById("DWM"); // <div id="Days"></div>
+
+DWMmTitle.append(lable);
+DWMmStats.append(Worth);
+DWMmodule.append(DWMmTitle, DWMmStats);
+logue.append(DWMmodule);
+}
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+#icon
+{
+display: grid;
+gap: 0.5em;
+grid-template-columns: repeat(4, 1fr);
+}
+
+#icon img
+{
+width: 100%;
+padding: 0.5em;
+border-radius: 0.5em;
+border: 1px solid #34D399;
+backdrop-filter: blur(5px);
+background-image: linear-gradient(rgba(255,255,255,0.75) 23.6%, 38.2%, rgba(0,0,0,0.25) 100%);
+box-shadow: 0 0.3em 0.3em rgba(0, 0, 0, 0.5);
+}
+
+/* border: 1px solid rgba(255, 255, 255, 0.5); */
+/* background-image: radial-gradient(ellipse at top, #10B981 0%, var(--background-color) 50%); */
+/* --card-hover-icon-color: #34D399; */
+/* --card-hover-icon-background-color: rgba(52, 211, 153, 0.1); */
+/* --card-hover-icon-border-color: rgba(52, 211, 153, 0.2); */

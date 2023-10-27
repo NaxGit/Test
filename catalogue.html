@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>const Pagination = "catalogue";</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./art/Alpha.css">
+    <link rel="stylesheet" href="./art/Delta.css">
+    <link rel="stylesheet" href="./art/icon.css">
+    <link rel="stylesheet" href="./art/tray.css">
+    <script src="./bin/Steptronic.js"></script>
+    <title>∞Pegasus</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <delta-menu></delta-menu>
+    <div class="iJava">
+        <div id="tray"></div>
+        <div id="icon"></div>
+    </div>
+    <delta-foot></delta-foot>
+<script>
+let idata;
+const AOL = indexedDB.open("Kings", 1);
+AOL.onsuccess = () => {idata = AOL.result; alpha(); shiftLock();};
+AOL.onupgradeneeded = function(e) {e.target.transaction.abort(); location.href = "./dial/upgrade.html";};
+
+let trays = document.getElementById("tray");
+let icons = document.getElementById("icon");
+
+let shift;
+function shiftLock()
+{
+const examine = idata.transaction("config", "readonly").objectStore("config").get("shift");
+examine.onsuccess = function()
+{
+shift = examine.result.port;
+};
+};
+
+if (Pagination === "catalogue"){
+var script = document.createElement('script');
+script.src = './dial/Zilo.js';
+var ref = document.querySelector('script');
+ref.parentNode.insertBefore(script, ref);
+}
+
+function alpha()
+{
+if (Pagination === "salespage"){
+const query = idata.transaction("stock", "readonly").objectStore("stock").index("Shows").getAll(1);
+query.onsuccess = () => {let queryData = query.result; alphaIcons(queryData);};
+}
+if (Pagination === "catalogue"){alphaIcons(filedData); console.log('asdasd');};};
+
+</script>
+<script src="./bin/alphaIcons.js"></script>
+<script src="./bin/tray.js"></script>
+</body>
+</html>
