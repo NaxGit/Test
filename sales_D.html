@@ -55,7 +55,7 @@ const query = idata.transaction("sales", "readonly").objectStore("sales").index(
 query.onsuccess = function()
 {
 let cell = query.result.map((row) => {return row.Cost});
-let Worth = 0; cell.forEach(KSH => {Worth += KSH;});
+    let Worth = 0; cell.forEach(KSH => {Worth += Number(KSH);});
 
 let lable = "daily Sales";
 
