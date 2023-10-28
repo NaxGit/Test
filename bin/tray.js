@@ -65,8 +65,11 @@ if (Pagination === "salespage"){storage = "sales";}
 let costinn = document.getElementById("cost").value;
 let sellinn = document.getElementById("sell").value;
 
-bottle.Cost = costinn;
-bottle.Sell = sellinn;
+let costIn = Number(costinn);
+let sellIn = Number(sellinn);
+
+bottle.Cost = costIn;
+bottle.Sell = sellIn;
 
 const query = idata.transaction("stock", "readonly").objectStore("stock").get(i);
 query.onsuccess = () =>
