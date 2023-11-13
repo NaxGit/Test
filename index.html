@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./access/N5.css">
+    <link rel="stylesheet" href="./access/Delta.css">
+    <script src="./Barista/dexie.js"></script>
+    <script src="./Barista/Steptronic.js"></script>
+    <title>Partly</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <search-bar></search-bar>
+    <delta-menu></delta-menu>
+    <div class="iJava">
+        <div id="tray"></div>
+        <div id="icon"></div>
+    </div>
+    <delta-foot></delta-foot>
+</body>
+
+<script>
+let trays = document.getElementById("tray");
+let icons = document.getElementById("icon");
+</script>
+
+<script type="module">
+let idata = await new Dexie("Kings").open();
+let confi = await idata.table("config");
+let query = await confi.get({cfKey: "shift"});
+let shift = await Dexie.getByKeyPath(query, "port");
+
+let stock = await idata.table("stock");
+let alpha = await stock.where('Shows').below(25).toArray();
+
+let tagOS = "sales";
+
+
+alphaIcons(alpha, tagOS, shift);
+</script>
+
+<script src="./Barista/alpha_module.js"></script>
+<script src="./Barista/shift_module.js"></script>
+
+</html>

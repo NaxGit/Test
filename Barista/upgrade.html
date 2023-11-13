@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../acronym/article.css"> -->
+    <!-- <script src="../Steptronic.js"></script> -->
+    <title>planeαngle</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <div class="Space"></div>
+    <delta-menu></delta-menu>
+    <div class="myDiv"></div>
+    <delta-foot></delta-foot>
+<script>
+let idata; const AOL = indexedDB.open("Kings", 1); AOL.onsuccess = () => {idata = AOL.result; linux();};
+
+AOL.onupgradeneeded = function(e)
+{
+idata = e.target.result;
+const stock = idata.createObjectStore("stock", {keyPath: "LiqU"}); stock.createIndex("Shows", "Shows", { unique: false });
+const sales = idata.createObjectStore("sales", {keyPath: "Stamp"}); sales.createIndex("Shift", "Shift", { unique: false });
+const config = idata.createObjectStore("config", {keyPath: "cfKey"});
+};
+
+function linux()
+{
+let shift = idata.transaction("config", "readwrite").objectStore("config").add({cfKey: "shift", port: 1});
+
+homevia();
+};
+
+function homevia() {location.href = "../index.html";};
+
+</script>
+</body>
+</html>

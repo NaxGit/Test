@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./access/N5.css">
+    <link rel="stylesheet" href="./access/Delta.css">
+    <link rel="stylesheet" href="./access/Zebra.css">
+    <script src="./Barista/dexie.js"></script>
+    <script src="./Barista/Steptronic.js"></script>
+    <title>Partly</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <search-bar></search-bar>
+    <delta-menu></delta-menu>
+    <div class="iJava">
+        <div id="tray">
+            <div id="logue"></div>
+            <div id="logue"></div>
+        </div>
+        <div id="repo"></div>
+    </div>
+    <delta-foot></delta-foot>
+</body>
+
+<script>
+let trays = document.getElementById("tray");
+// let icons = document.getElementById("icon");
+let repo = document.getElementById("repo");
+</script>
+
+<script type="module">
+
+    let idata = await new Dexie("Kings").open();
+
+    let confi = await idata.table("config");
+    let sales = await idata.table("sales");
+
+    let query = await confi.get({cfKey: "shift"});
+    let shift = await Dexie.getByKeyPath(query, "port");
+    
+    let alpha = await sales.where('Shift').below(25).toArray();
+
+alphaIcons(alpha);
+salesDly(alpha);
+
+</script>
+
+<script>
+function alphaIcons(iconData)
+{
+    
+    iconData.forEach
+    (
+        (i) =>
+        {
+        let TimeDiv = document.createElement("div"); TimeDiv.textContent = i.Stime; TimeDiv.className = "Ztime";
+        let ItemDiv = document.createElement("div"); ItemDiv.textContent = i.Item; ItemDiv.className = "Zitem";
+        let SellDiv = document.createElement("div"); SellDiv.textContent = i.Sell; SellDiv.className = "Zsell";
+        repo.append(TimeDiv, ItemDiv, SellDiv);
+        }
+    );
+};
+
+let logue = document.getElementById("logue");
+
+function salesDly(alpha)
+{
+
+    total = 0; for (i = 0; i < alpha.length; i++) {total += alpha[i].Sell;};
+
+let lable = "Today's sales";
+
+let DWMmodule = document.createElement("div"); DWMmodule.setAttribute("class", "DWMmodule");
+let DWMmTitle = document.createElement("div"); DWMmTitle.setAttribute("class", "DWMmTitle");
+let DWMmStats = document.createElement("div"); DWMmStats.setAttribute("class", "DWMmStats");
+
+let chain = document.getElementById("DWM"); // <div id="Days"></div>
+
+DWMmTitle.append(lable);
+DWMmStats.append(total);
+DWMmodule.append(DWMmTitle, DWMmStats);
+logue.append(DWMmodule);
+
+salesDlyProf(alpha, total);
+};
+
+function salesDlyProf(alpha, total)
+{
+
+    tcotal = 0; for (i = 0; i < alpha.length; i++) {tcotal += alpha[i].Cost;};
+
+let Proft = total - tcotal;
+
+let lable = "Today's margin";
+
+let DWMmodule = document.createElement("div"); DWMmodule.setAttribute("class", "DWMmodule");
+let DWMmTitle = document.createElement("div"); DWMmTitle.setAttribute("class", "DWMmTitle");
+let DWMmStats = document.createElement("div"); DWMmStats.setAttribute("class", "DWMmStats");
+
+let chain = document.getElementById("DWM"); // <div id="Days"></div>
+
+DWMmTitle.append(lable);
+DWMmStats.append(Proft);
+DWMmodule.append(DWMmTitle, DWMmStats);
+logue.append(DWMmodule);
+};
+</script>
+</html>
