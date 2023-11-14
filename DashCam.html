@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./access/Delta.css">
+    <link rel="stylesheet" href="./access/Dash.css">
+    <!-- <link rel="stylesheet" href="./access/N5.css"> -->
+    <link rel="stylesheet" href="./access/bulma.css">
+    <script src="./Barista/Steptronic.js"></script>
+    <script src="./Barista/dexie.js"></script>
+    <title>Dash</title>
+</head>
+<body>
+    <delta-head></delta-head>
+    <search-bar></search-bar>
+    <delta-menu></delta-menu>
+    <div class="iJava">
+        <div id="tray"></div>
+        <div id="stat"></div>
+    </div>
+    <delta-foot></delta-foot>
+<script type="module">
+
+let stats = document.getElementById("stat");
+
+let idata = await new Dexie("Kings").open();
+
+let stock = await idata.table("stock");
+let sales = await idata.table("sales");
+
+let monye = await sales.orderBy('LiqU').eachUniqueKey(async function (e)
+{
+sales.where("LiqU").equals(e).count(async function(count)
+{
+let out = document.createElement("div"); out.classList = "message is-dark";
+let inn = document.createElement("div"); inn.classList = "message-body";
+let que = await sales.get({LiqU: e});
+
+inn.innerHTML =
+"<strong>" + que.Item + "</strong><br><span class='tag is-black'>" + count + "</span><strong></strong> Sold since morning";
+
+
+
+    out.append(inn);
+    stats.append(out);
+
+    console.log("I have " + count + " friends with the shoe size between 40 and 45");
+});
+
+});
+
+</script>
+</body>
+</html>
