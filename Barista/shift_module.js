@@ -8,8 +8,8 @@ function shiftChange() {
 }
 async function shsiftCheque() {
   let idata = await new Dexie("Kings").open();
-  let confi = await idata.table("config");
-  let query = await confi.get({cfKey: "shift"});
+  let confi = await idata.table("files");
+  let query = await confi.get({Match: "shift"});
   
   shift = query.port;
 
@@ -23,9 +23,9 @@ async function nddame() {
       // Declare Database
       // 
   let idata = await new Dexie("Kings").open();
-  let confi = await idata.table("config");
+  let confi = await idata.table("files");
 
-  let query = await confi.get({cfKey: "shift"});
+  let query = await confi.get({Match: "shift"});
 
   phyil =  Dexie.getByKeyPath(query, "port");
 
